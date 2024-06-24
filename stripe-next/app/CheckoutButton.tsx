@@ -28,6 +28,7 @@ export default function CheckoutButton() {
         email: data.user?.email,
       }),
     });
+
     const session = await response.json();
     await stripe?.redirectToCheckout({ sessionId: session.id });
   };

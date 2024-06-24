@@ -3,8 +3,8 @@ import { stripe } from "@/utils/stripe";
 
 export async function POST(request: Request) {
   try {
-    const { priceId, email, userId } = await request.json();
-    console.log(priceId, email, userId);
+    let { priceId, email, userId } = await request.json();
+    priceId = "price_1PVJWtRu5zEke2diiBRiUXB2";
 
     const session = await stripe.checkout.sessions.create({
       metadata: {
@@ -19,8 +19,7 @@ export async function POST(request: Request) {
         },
         {
           // one-time setup fee
-          price: "price_1OtHdOBF7AptWZlcPmLotZgW",
-          // price_1PVJhbRu5zEke2diP62za8Hb
+          price: "price_1PVJhbRu5zEke2diP62za8Hb",
           quantity: 1,
         },
       ],
